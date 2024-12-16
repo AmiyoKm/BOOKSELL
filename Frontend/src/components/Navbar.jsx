@@ -14,7 +14,7 @@ const navigation = [
 ]
 
 const Navbar = () => {
-  const currentUser = false;
+  const currentUser = true;
   const  [isDropdownOpen, setIsDropdownOpen] = useState(false)
   const cartItems = useSelector(state => state.cart.cartItems);
   return (
