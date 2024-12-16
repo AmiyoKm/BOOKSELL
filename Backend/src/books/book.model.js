@@ -1,15 +1,15 @@
 const { default: mongoose } = require("mongoose");
 
-const bookShema = new mongoose.Schema({
+const bookSchema = new mongoose.Schema({
     title: {
-        type: String,
-        require: true,
-    },
-    description:  {
         type: String,
         required: true,
     },
-    category:  {
+    description: {
+        type: String,
+        required: true,
+    },
+    category: {
         type: String,
         required: true,
     },
@@ -29,13 +29,9 @@ const bookShema = new mongoose.Schema({
         type: Number,
         required: true,
     },
-    createdAt: {
-        type: Date,
-        default: Date.now,
-    }
-  },{
-    timestamps: true,
-})
+}, {
+    timestamps: true, // Automatically adds createdAt and updatedAt fields
+});
 
-const Book = mongoose.model('Book',bookShema);
+const Book = mongoose.model('Book', bookSchema);
 module.exports = Book;
