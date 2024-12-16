@@ -31,7 +31,7 @@ const Footer = () => {
               className="w-full px-4 py-2 rounded-l-md text-black"
             />
             <button className="bg-primary px-6 py-2 rounded-r-md hover:bg-primary-dark">
-              Subscribe
+              Login
             </button>
           </div>
         </div>
