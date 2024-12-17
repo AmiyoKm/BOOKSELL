@@ -3,8 +3,9 @@ import { HiMiniBars3CenterLeft, HiOutlineHeart, HiOutlineShoppingCart } from "re
 import { IoSearchOutline } from "react-icons/io5";
 import { HiOutlineUser } from "react-icons/hi";
 import avatarImg from "../assets/avatar.png"
-import { useState } from "react"
+import { useContext, useState } from "react"
 import { useSelector } from "react-redux";
+import { OrderContext } from "../contexts/GlobalContextProvider";
 
 const navigation = [
     {name: "Dashboard", href:"/user-dashboard"},
@@ -14,7 +15,7 @@ const navigation = [
 ]
 
 const Navbar = () => {
-  const currentUser = true;
+  const {currentUser} = useContext(OrderContext)
   const  [isDropdownOpen, setIsDropdownOpen] = useState(false)
   const cartItems = useSelector(state => state.cart.cartItems);
   return (

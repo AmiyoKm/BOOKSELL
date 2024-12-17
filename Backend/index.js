@@ -7,13 +7,19 @@ const port = process.env.PORT || 5000;
 require('dotenv').config();
 
 app.use(express.json());
-app.use(cors({
-    origin: ['http://localhost:5174/'],
-    credentials: true
-}))
+ app.use(cors({
+//     origin: ['http://localhost:5173/'],
+//     methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed methods
+//     allowedHeaders: ['Content-Type', 'Authorization'], // Allowed headers
+//     credentials: true
+ }))
 
 const bookRoutes = require('./src/books/book.route');
+const orderRoutes = require('./src/order/order.route');
+const userRoutes = require('./src/user/user.route');
 app.use("/api/books", bookRoutes)
+app.use("/api/order", orderRoutes)
+app.use("/api/user", userRoutes)
 
 // pass - 2215151139bookstore
 async function main() {

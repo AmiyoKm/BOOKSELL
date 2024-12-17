@@ -1,15 +1,18 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import axios from "axios";
+import { OrderContext } from "../../contexts/GlobalContextProvider";
 
 const Checkout = () => {
+    const {currentUser} =useContext(OrderContext)
   const cartItems = useSelector((state) => state.cart.cartItems || []);
   const totalPrice = cartItems
     .reduce((acc, item) => acc + item.newPrice, 0)
     .toFixed(2);
-  const currentUser = { email: "test@example.com" }; // Mocked for testing
+   // Mocked for testing
 
   const {
     register,
@@ -33,6 +36,7 @@ const Checkout = () => {
       productIds: cartItems.map((item) => item?._id),
       totalPrice: totalPrice,
     };
+    const res = axios.post(`http://localhost:5000/api/order/${currentUser._id}`, newOrder);
     console.log("Order Submitted:", newOrder);
 
     Swal.fire({
